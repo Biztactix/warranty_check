@@ -1,0 +1,423 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.ConsoleApp/WarrantyCheck.ConsoleApp.csproj": {}
+  },
+  "projects": {
+    "/home/ClaudeCodeRepos/warranty_check/src/WarrantyCheck.Core/WarrantyCheck.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ClaudeCodeRepos/warranty_check/src/WarrantyCheck.Core/WarrantyCheck.Core.csproj",
+        "projectName": "WarrantyCheck.Core",
+        "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/WarrantyCheck.Core/WarrantyCheck.Core.csproj",
+        "packagesPath": "/home/biztactix/.nuget/packages/",
+        "outputPath": "/home/ClaudeCodeRepos/warranty_check/src/WarrantyCheck.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/biztactix/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Application/WarrantyCheck.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Application/WarrantyCheck.Application.csproj",
+        "projectName": "WarrantyCheck.Application",
+        "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Application/WarrantyCheck.Application.csproj",
+        "packagesPath": "/home/biztactix/.nuget/packages/",
+        "outputPath": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/biztactix/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/home/ClaudeCodeRepos/warranty_check/src/WarrantyCheck.Core/WarrantyCheck.Core.csproj": {
+                "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/WarrantyCheck.Core/WarrantyCheck.Core.csproj"
+              },
+              "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Infrastructure/WarrantyCheck.Infrastructure.csproj": {
+                "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Infrastructure/WarrantyCheck.Infrastructure.csproj"
+              },
+              "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Providers/WarrantyCheck.Providers.csproj": {
+                "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Providers/WarrantyCheck.Providers.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.ConsoleApp/WarrantyCheck.ConsoleApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.ConsoleApp/WarrantyCheck.ConsoleApp.csproj",
+        "projectName": "WarrantyCheck.ConsoleApp",
+        "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.ConsoleApp/WarrantyCheck.ConsoleApp.csproj",
+        "packagesPath": "/home/biztactix/.nuget/packages/",
+        "outputPath": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.ConsoleApp/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/biztactix/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/home/ClaudeCodeRepos/warranty_check/src/WarrantyCheck.Core/WarrantyCheck.Core.csproj": {
+                "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/WarrantyCheck.Core/WarrantyCheck.Core.csproj"
+              },
+              "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Application/WarrantyCheck.Application.csproj": {
+                "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Application/WarrantyCheck.Application.csproj"
+              },
+              "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Infrastructure/WarrantyCheck.Infrastructure.csproj": {
+                "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Infrastructure/WarrantyCheck.Infrastructure.csproj"
+              },
+              "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Providers/WarrantyCheck.Providers.csproj": {
+                "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Providers/WarrantyCheck.Providers.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.EnvironmentVariables": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Console": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "System.CommandLine": {
+              "target": "Package",
+              "version": "[2.0.0-beta4.22272.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Infrastructure/WarrantyCheck.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Infrastructure/WarrantyCheck.Infrastructure.csproj",
+        "projectName": "WarrantyCheck.Infrastructure",
+        "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Infrastructure/WarrantyCheck.Infrastructure.csproj",
+        "packagesPath": "/home/biztactix/.nuget/packages/",
+        "outputPath": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/biztactix/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/home/ClaudeCodeRepos/warranty_check/src/WarrantyCheck.Core/WarrantyCheck.Core.csproj": {
+                "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/WarrantyCheck.Core/WarrantyCheck.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.2.0, )"
+            },
+            "Polly.Extensions.Http": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Providers/WarrantyCheck.Providers.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Providers/WarrantyCheck.Providers.csproj",
+        "projectName": "WarrantyCheck.Providers",
+        "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Providers/WarrantyCheck.Providers.csproj",
+        "packagesPath": "/home/biztactix/.nuget/packages/",
+        "outputPath": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Providers/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/biztactix/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/home/ClaudeCodeRepos/warranty_check/src/WarrantyCheck.Core/WarrantyCheck.Core.csproj": {
+                "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/WarrantyCheck.Core/WarrantyCheck.Core.csproj"
+              },
+              "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Infrastructure/WarrantyCheck.Infrastructure.csproj": {
+                "projectPath": "/home/ClaudeCodeRepos/warranty_check/src/src/WarrantyCheck.Infrastructure/WarrantyCheck.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "AngleSharp": {
+              "target": "Package",
+              "version": "[0.17.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
