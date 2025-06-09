@@ -6,16 +6,25 @@ url =
 
 [discover]
 # enable/disable discoveries
+cisco = True
 dell = True
 hp = True
 ibm = True
 lenovo = True
+meraki = True
 forcedupdate = False
+
+[cisco]
+# set the client_id and client_secret provided by Cisco
+client_id =
+client_secret =
+url = https://api.cisco.com/sn2info/v2/coverage/summary/serial_numbers
 
 [dell]
 # set api_key as provided by Dell
-api_key =
-url = https://sandbox.api.dell.com/support/assetinfo/v4/getassetwarranty
+client_id =
+client_secret =
+url = https://apigtwb2c.us.dell.com/PROD/sbil/eapi/v5/asset-entitlements
 
 [hp]
 # set api_key as provided by HP
@@ -30,6 +39,10 @@ url2 = http://support.lenovo.com/us/en/products
 [lenovo]
 url = http://support.lenovo.com/services/us/en/ContentService/GetProducts
 url2 = http://support.lenovo.com/us/en/products
+
+[meraki]
+api_key = 
+url = https://api.meraki.com/api/v0
 
 [other]
 # print verbose info to STDOUT

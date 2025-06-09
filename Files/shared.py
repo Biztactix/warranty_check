@@ -34,16 +34,18 @@ class Config:
             res = self.__get_d42_cfg()
         elif source == 'discover':
             res = self.__get_discover_cfg()
+        elif source == 'cisco':
+            res = self.__get_cisco_cfg()
         elif source == 'dell':
             res = self.__get_dell_cfg()
         elif source == 'hp':
             res = self.__get_hp_cfg()
-        elif source == 'cisco':
-            res = self.__get_cisco_cfg()
         elif source == 'ibm':
             res = self.__get_ibm_cfg()
         elif source == 'lenovo':
             res = self.__get_lenovo_cfg()
+        elif source == 'meraki':
+            res = self.__get_meraki_cfg()
         else:
             print '\n[!] Error. Unknown source "%s".\n\tExiting...\n' % source
             sys.exit()
@@ -63,26 +65,43 @@ class Config:
 
     def __get_discover_cfg(self):
         # Discover -----------------------------------------
+        cisco = self.cc.getboolean('discover', 'cisco')
         dell = self.cc.getboolean('discover', 'dell')
         hp = self.cc.getboolean('discover', 'hp')
         ibm = self.cc.getboolean('discover', 'ibm')
         lenovo = self.cc.getboolean('discover', 'lenovo')
+        meraki = self.cc.getboolean('discover', 'meraki')
         forcedupdate = self.cc.getboolean('discover', 'forcedupdate')
         return {
+            'cisco': cisco,
             'dell': dell,
             'hp': hp,
             'ibm': ibm,
             'lenovo': lenovo,
+            'meraki': meraki,
             'forcedupdate': forcedupdate
+        }
+
+    def __get_cisco_cfg(self):
+        # Cisco ---------------------------------------------
+        cisco_url = self.cc.get('cisco', 'url')
+        cisco_client_id = self.cc.get('cisco', 'client_id')
+        cisco_client_secret = self.cc.get('cisco', 'client_secret')
+        return {
+            'url': cisco_url,
+            'client_id': cisco_client_id,
+            'client_secret': cisco_client_secret
         }
 
     def __get_dell_cfg(self):
         # Dell ---------------------------------------------
         dell_url = self.cc.get('dell', 'url')
-        dell_api_key = self.cc.get('dell', 'api_key')
+        dell_client_id = self.cc.get('dell', 'client_id')
+        dell_client_secret = self.cc.get('dell', 'client_secret')
         return {
             'url': dell_url,
-            'api_key': dell_api_key
+            'client_id': dell_client_id,
+            'client_secret': dell_client_secret
         }
 
     def __get_hp_cfg(self):
@@ -94,17 +113,6 @@ class Config:
             'url': hp_url,
             'api_key': hp_api_key,
             'api_secret': hp_api_secret
-        }
-
-    def __get_cisco_cfg(self):
-        # Cisco --------------------------------------------
-        cisco_url = self.cc.get('cisco', 'url')
-        cisco_api_key = self.cc.get('cisco', 'api_key')
-        cisco_api_secret = self.cc.get('cisco', 'api_secret')
-        return {
-            'url': cisco_url,
-            'api_key': cisco_api_key,
-            'api_secret': cisco_api_secret
         }
 
     def __get_ibm_cfg(self):
@@ -123,6 +131,15 @@ class Config:
         return {
             'url': lenovo_url,
             'url2': lenovo_url2
+        }
+
+    def __get_meraki_cfg(self):
+        # Meraki ---------------------------------------------
+        meraki_url = self.cc.get('meraki', 'url')
+        meraki_api_key = self.cc.get('meraki', 'api_key')
+        return {
+            'url': meraki_url,
+            'api_key': meraki_api_key
         }
 
 

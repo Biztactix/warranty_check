@@ -2,9 +2,11 @@
 import sys
 
 from Files.shared import Config, Device42rest
+from Files.warranty_cisco import Cisco
 from Files.warranty_dell import Dell
 from Files.warranty_hp import Hp
 from Files.warranty_ibm_lenovo import IbmLenovo
+from Files.warranty_meraki import Meraki
 
 
 def get_hardware_by_vendor(name):
@@ -29,10 +31,20 @@ def get_vendor_api(name):
     current_cfg = cfg.get_config(name)
     api = None
 
-    if vendor == 'dell':
+    if vendor == 'cisco':
+        cisco_params = {
+            'url': current_cfg['url'],
+            'client_id': current_cfg['client_id'],
+            'client_secret': current_cfg['client_secret'],
+            'd42_rest': d42_rest
+        }
+        api = Cisco(cisco_params)
+
+    elif vendor == 'dell':
         dell_params = {
             'url': current_cfg['url'],
-            'api_key': current_cfg['api_key'],
+            'client_id': current_cfg['client_id'],
+            'client_secret': current_cfg['client_secret'],
             'd42_rest': d42_rest
         }
         api = Dell(dell_params)
@@ -53,6 +65,14 @@ def get_vendor_api(name):
             'd42_rest': d42_rest
         }
         api = IbmLenovo(vendor, ibm_lenovo_params)
+
+    elif vendor == "meraki":
+        meraki_params = {
+            'url': current_cfg['url'],
+            'api_key': current_cfg['api_key'],
+            'd42_rest': d42_rest
+        }
+        api = Meraki(meraki_params)
 
     return api
 
@@ -99,6 +119,7 @@ def loader(name, api, d42):
             print '\n[!] Finished'
             break
 
+
 if __name__ == '__main__':
 
     # get settings from config file
@@ -128,6 +149,7 @@ if __name__ == '__main__':
                     line_no = line_item.get('line_no')
                     devices = line_item.get('devices')
                     contractid = line_item.get('line_notes')
+                    # POs with no start and end dates will now be included and given a hasher key with date min and max
                     start = line_item.get('line_start_date')
                     end = line_item.get('line_end_date')
 
@@ -140,6 +162,8 @@ if __name__ == '__main__':
                                     purchases[hasher] = [purchase_id, order_no, line_no, contractid, start, end, discover['forcedupdate']]
 
     APPS_ROW = []
+    if discover['cisco']:
+        APPS_ROW.append('cisco')
     if discover['dell']:
         APPS_ROW.append('dell')
     if discover['hp']:
@@ -148,6 +172,8 @@ if __name__ == '__main__':
         APPS_ROW.append('ibm')
     if discover['lenovo']:
         APPS_ROW.append('lenovo')
+    if discover['meraki']:
+        APPS_ROW.append('meraki')
 
     for vendor in APPS_ROW:
         print '\n[+] %s section' % vendor
