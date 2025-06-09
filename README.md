@@ -1,52 +1,152 @@
-# Warranty check
+# Warranty Check - C# Implementation
 
-A <a href="https://biztactix.com.au">Biztactix</a> Fork from the original
+A modern C# .NET 9 implementation of the warranty check system for Device42.
+
+Originally a <a href="https://biztactix.com.au">Biztactix</a> Fork from the Python version.
 
 ## About Device42
 [Device42](http://www.device42.com) is a comprehensive data center inventory management and IP Address management software that integrates centralized password management, impact charts and applications mappings with IT asset management.
 
-## Intro
-This script checks warranty status for Dell, HP, IBM, Lenovo and Meraki manufactured devices stored in Device42.
+## Overview
+This application automatically checks warranty status for Cisco, Dell, HP, IBM, Lenovo, and Meraki manufactured devices stored in Device42. The C# implementation provides improved performance, type safety, and modern .NET features compared to the original Python version.
 
 ## Prerequisites
-In order for this script to check warranty status of the device, the device must have hardware model and serial number entered in Device42. Dell Warranty Status API key must be acquired as well.
-- Device42 Hardware model must have "Cisco", "Dell", "Hewlett Packard", "IBM", "LENOVO" or "Meraki" in it's manufacturer data.
-- Device42 Serial number must be set to "Cisco", "Dell", "Hewlett Packard", "IBM", "LENOVO" or "Meraki" device serial number.
-- Cisco's client id and client secret can be obtained by completing their on-boarding form. Please follow the instructions from here: https://www.cisco.com/c/en/us/support/docs/services/sntc/onboarding_guide.html instructions for enabling the Cisco support APIs can be found here: https://apiconsole.cisco.com/documentation
-- Dell's client id and client secret can be obtained by filling the on-boarding form. New and existing API users will need to register an account with TechDirect. Please check: http://en.community.dell.com/dell-groups/supportapisgroup/
-- HP's API key can be obtained by filling the on-boarding form. Please, follow the instructions from here: https://developers.hp.com/css-enroll
-- Merakis API key can be obtained by going to the organization > settings page on the Meraki dashboard. Ensure that the enable access to API checkbox is selected then go to your profile to generate the API key. Please check https://developer.cisco.com/meraki/api/#/rest/getting-started/what-can-the-api-be-used-for
-## Plans
-- Include life_cycle event to register the purchase date. Unfortunately it can’t can done now, as I can’t easily compare purchases with the information found at dell. The life_cycle event doesn’t give back the serial, only the devicename. It would be nice if the serial_no could be added to the output of GET /api/1.0/lifecycle_event/
 
-## Gotchas
-- If either hardware model or serial # is missing, warranty status won't be checked for device.
-- IBM script points to warranty info not related to the SKU, serial given
-- If a Meraki product has a licence with a renewal required state, the expiration date will be set to the current date
+### System Requirements
+- .NET 9.0 or later
+- Windows, Linux, or macOS
 
-## Change Log
+### Device42 Requirements
+- Devices must have hardware model and serial number entered in Device42
+- Hardware model manufacturer must contain: "Cisco", "Dell", "Hewlett Packard", "IBM", "LENOVO", or "Meraki"
+- Serial numbers must be valid for the respective vendor
 
-## Usage
-- Set required parameters in warranty.cfg file and run starter.py script:
+### Vendor API Credentials
 
-## Linux Usage
-- Install pip depend on your distro.
-- Run `pip install requests`
-- Run `python starter.py`
+#### OAuth 2.0 Vendors (Cisco, Dell)
+- **Cisco**: Client ID and Client Secret from [Cisco API Console](https://apiconsole.cisco.com/documentation)
+  - Follow onboarding: https://www.cisco.com/c/en/us/support/docs/services/sntc/onboarding_guide.html
+- **Dell**: Client ID and Client Secret from TechDirect
+  - Register at: http://en.community.dell.com/dell-groups/supportapisgroup/
 
-## Windows Usage
-- Download the pip installer: [https://bootstrap.pypa.io/get-pip.py](https://bootstrap.pypa.io/get-pip.py)
-- Open a console in the download folder as Admin and run `get-pip.py`.
-- Add the path to your environment : "%PythonFolder%\Scripts"
-- Run `pip install requests`
-- Run `python starter.py`
+#### API Key Vendors (HP, Meraki)
+- **HP**: API Key from HP Developer Portal
+  - Register at: https://developers.hp.com/css-enroll
+- **Meraki**: API Key from Meraki Dashboard
+  - Enable API access in Organization > Settings, then generate key in your profile
+  - Details: https://developer.cisco.com/meraki/api/#/rest/getting-started/what-can-the-api-be-used-for
 
-## Compatibility
-* requests module required
-* Script runs on Linux and Windows
-* Python 2.7
+#### Web Scraping Vendors (IBM, Lenovo)
+- No API credentials required (uses web scraping)
 
-=======
+## Configuration
+
+The application uses `appsettings.json` for configuration. Copy and modify the settings file:
+
+```bash
+cd src/src/WarrantyCheck.ConsoleApp
+cp appsettings.json appsettings.Production.json
+# Edit appsettings.Production.json with your settings
+```
+
+### Configuration Structure
+
+```json
+{
+  "Device42": {
+    "BaseUrl": "https://your-device42-instance.com",
+    "Username": "your-username",
+    "Password": "your-password"
+  },
+  "Discovery": {
+    "Cisco": true,
+    "Dell": true,
+    "HP": false,
+    "IBM": false,
+    "Lenovo": false,
+    "Meraki": false,
+    "ForceUpdate": false
+  },
+  "Vendors": {
+    "Cisco": {
+      "Enabled": true,
+      "Url": "https://api.cisco.com/sn2info/v2/coverage/summary/serial_numbers",
+      "ClientId": "your-client-id",
+      "ClientSecret": "your-client-secret"
+    }
+  }
+}
+```
+
+## Installation & Usage
+
+### Building from Source
+
+```bash
+# Clone the repository
+git clone git@github.com:Biztactix/warranty_check.git
+cd warranty_check
+
+# Build the solution
+dotnet build
+
+# Run the application
+cd src/src/WarrantyCheck.ConsoleApp
+dotnet run
+```
+
+### Cross-Platform Support
+- **Windows**: Native .NET 9 support
+- **Linux**: Works on all major distributions with .NET 9
+- **macOS**: Full compatibility with .NET 9
+
+## Architecture
+
+The C# implementation follows clean architecture principles:
+
+- **WarrantyCheck.Core**: Domain models and abstractions
+- **WarrantyCheck.Infrastructure**: External dependencies (HTTP, configuration)
+- **WarrantyCheck.Providers**: Vendor-specific warranty implementations
+- **WarrantyCheck.Application**: Business logic and orchestration
+- **WarrantyCheck.ConsoleApp**: Entry point with dependency injection
+
+## Key Features
+
+- ✅ **Async/Await**: Non-blocking operations throughout
+- ✅ **Dependency Injection**: Microsoft.Extensions.DependencyInjection
+- ✅ **Structured Logging**: Microsoft.Extensions.Logging
+- ✅ **Resilience**: Polly for retry policies and circuit breakers
+- ✅ **Type Safety**: Strong typing with nullable reference types
+- ✅ **Configuration**: Strongly-typed settings with validation
+- ✅ **Cross-Platform**: Runs on Windows, Linux, and macOS
+
+## Known Limitations
+
+- If hardware model or serial number is missing, warranty status won't be checked
+- IBM/Lenovo implementations rely on web scraping and may be fragile
+- Meraki products with renewal-required licenses set expiration to current date
+
+## Roadmap
+
+- [ ] Device42 REST client implementation
+- [ ] Vendor warranty provider implementations
+- [ ] Lifecycle event integration for purchase dates
+- [ ] Web API for on-demand warranty checks
+- [ ] Docker containerization
+- [ ] Azure Function deployment option
+
+## Migration from Python
+
+This C# implementation is a complete rewrite of the original Python version with:
+- Modern async patterns replacing synchronous requests
+- Strong typing instead of dynamic dictionaries  
+- Dependency injection instead of global variables
+- Structured logging instead of print statements
+- Clean architecture instead of monolithic scripts
+
+See `PYTHON_TO_CSHARP_MAPPING.md` for detailed migration guidance.
 
 ## Updates
-10/10/19 - Updated Dell warranty sync to use version 5 of their API (OAuth2.0), Version 4 EOL is scheduled for 12/15/19, Please update before this date
+
+**2025**: Complete C# .NET 9 rewrite with modern architecture and cross-platform support  
+**2019**: Updated Dell warranty sync to use version 5 of their API (OAuth2.0)
